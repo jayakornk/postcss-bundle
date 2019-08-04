@@ -1,4 +1,6 @@
-require=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const postcss = require('postcss');
+},{"postcss":14}],2:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -129,7 +131,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{"./container":3}],2:[function(require,module,exports){
+},{"./container":4}],3:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -188,7 +190,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{"./node":10}],3:[function(require,module,exports){
+},{"./node":11}],4:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -1059,7 +1061,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{"./at-rule":1,"./comment":2,"./declaration":5,"./node":10,"./parse":11,"./rule":17}],4:[function(require,module,exports){
+},{"./at-rule":2,"./comment":3,"./declaration":6,"./node":11,"./parse":12,"./rule":19}],5:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -1361,7 +1363,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{"./terminal-highlight":36,"chalk":36,"supports-color":36}],5:[function(require,module,exports){
+},{"./terminal-highlight":38,"chalk":38,"supports-color":38}],6:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -1461,7 +1463,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{"./node":10}],6:[function(require,module,exports){
+},{"./node":11}],7:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -1679,7 +1681,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{"./css-syntax-error":4,"./previous-map":13,"path":39}],7:[function(require,module,exports){
+},{"./css-syntax-error":5,"./previous-map":15,"path":41}],8:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -2127,7 +2129,7 @@ module.exports = exports.default;
 
 
 }).call(this,require('_process'))
-},{"./map-generator":9,"./parse":11,"./result":15,"./stringify":19,"./warn-once":22,"_process":40}],8:[function(require,module,exports){
+},{"./map-generator":10,"./parse":12,"./result":17,"./stringify":21,"./warn-once":24,"_process":42}],9:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -2222,7 +2224,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -2580,7 +2582,7 @@ module.exports = exports.default;
 
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":37,"path":39,"source-map":34}],10:[function(require,module,exports){
+},{"buffer":39,"path":41,"source-map":36}],11:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -3192,7 +3194,7 @@ module.exports = exports.default;
 
 
 }).call(this,require('_process'))
-},{"./css-syntax-error":4,"./stringifier":18,"./stringify":19,"_process":40}],11:[function(require,module,exports){
+},{"./css-syntax-error":5,"./stringifier":20,"./stringify":21,"_process":42}],12:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -3236,7 +3238,7 @@ module.exports = exports.default;
 
 
 }).call(this,require('_process'))
-},{"./input":6,"./parser":12,"_process":40}],12:[function(require,module,exports){
+},{"./input":7,"./parser":13,"_process":42}],13:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -3849,7 +3851,294 @@ exports.default = Parser;
 module.exports = exports.default;
 
 
-},{"./at-rule":1,"./comment":2,"./declaration":5,"./root":16,"./rule":17,"./tokenize":20}],13:[function(require,module,exports){
+},{"./at-rule":2,"./comment":3,"./declaration":6,"./root":18,"./rule":19,"./tokenize":22}],14:[function(require,module,exports){
+"use strict";
+
+exports.__esModule = true;
+exports.default = void 0;
+
+var _declaration = _interopRequireDefault(require("./declaration"));
+
+var _processor = _interopRequireDefault(require("./processor"));
+
+var _stringify = _interopRequireDefault(require("./stringify"));
+
+var _comment = _interopRequireDefault(require("./comment"));
+
+var _atRule = _interopRequireDefault(require("./at-rule"));
+
+var _vendor = _interopRequireDefault(require("./vendor"));
+
+var _parse = _interopRequireDefault(require("./parse"));
+
+var _list = _interopRequireDefault(require("./list"));
+
+var _rule = _interopRequireDefault(require("./rule"));
+
+var _root = _interopRequireDefault(require("./root"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Create a new {@link Processor} instance that will apply `plugins`
+ * as CSS processors.
+ *
+ * @param {Array.<Plugin|pluginFunction>|Processor} plugins PostCSS plugins.
+ *        See {@link Processor#use} for plugin format.
+ *
+ * @return {Processor} Processor to process multiple CSS.
+ *
+ * @example
+ * import postcss from 'postcss'
+ *
+ * postcss(plugins).process(css, { from, to }).then(result => {
+ *   console.log(result.css)
+ * })
+ *
+ * @namespace postcss
+ */
+function postcss() {
+  for (var _len = arguments.length, plugins = new Array(_len), _key = 0; _key < _len; _key++) {
+    plugins[_key] = arguments[_key];
+  }
+
+  if (plugins.length === 1 && Array.isArray(plugins[0])) {
+    plugins = plugins[0];
+  }
+
+  return new _processor.default(plugins);
+}
+/**
+ * Creates a PostCSS plugin with a standard API.
+ *
+ * The newly-wrapped function will provide both the name and PostCSS
+ * version of the plugin.
+ *
+ * ```js
+ * const processor = postcss([replace])
+ * processor.plugins[0].postcssPlugin  //=> 'postcss-replace'
+ * processor.plugins[0].postcssVersion //=> '6.0.0'
+ * ```
+ *
+ * The plugin function receives 2 arguments: {@link Root}
+ * and {@link Result} instance. The function should mutate the provided
+ * `Root` node. Alternatively, you can create a new `Root` node
+ * and override the `result.root` property.
+ *
+ * ```js
+ * const cleaner = postcss.plugin('postcss-cleaner', () => {
+ *   return (root, result) => {
+ *     result.root = postcss.root()
+ *   }
+ * })
+ * ```
+ *
+ * As a convenience, plugins also expose a `process` method so that you can use
+ * them as standalone tools.
+ *
+ * ```js
+ * cleaner.process(css, processOpts, pluginOpts)
+ * // This is equivalent to:
+ * postcss([ cleaner(pluginOpts) ]).process(css, processOpts)
+ * ```
+ *
+ * Asynchronous plugins should return a `Promise` instance.
+ *
+ * ```js
+ * postcss.plugin('postcss-import', () => {
+ *   return (root, result) => {
+ *     return new Promise( (resolve, reject) => {
+ *       fs.readFile('base.css', (base) => {
+ *         root.prepend(base)
+ *         resolve()
+ *       })
+ *     })
+ *   }
+ * })
+ * ```
+ *
+ * Add warnings using the {@link Node#warn} method.
+ * Send data to other plugins using the {@link Result#messages} array.
+ *
+ * ```js
+ * postcss.plugin('postcss-caniuse-test', () => {
+ *   return (root, result) => {
+ *     root.walkDecls(decl => {
+ *       if (!caniuse.support(decl.prop)) {
+ *         decl.warn(result, 'Some browsers do not support ' + decl.prop)
+ *       }
+ *     })
+ *   }
+ * })
+ * ```
+ *
+ * @param {string} name          PostCSS plugin name. Same as in `name`
+ *                               property in `package.json`. It will be saved
+ *                               in `plugin.postcssPlugin` property.
+ * @param {function} initializer Will receive plugin options
+ *                               and should return {@link pluginFunction}
+ *
+ * @return {Plugin} PostCSS plugin.
+ */
+
+
+postcss.plugin = function plugin(name, initializer) {
+  function creator() {
+    var transformer = initializer.apply(void 0, arguments);
+    transformer.postcssPlugin = name;
+    transformer.postcssVersion = new _processor.default().version;
+    return transformer;
+  }
+
+  var cache;
+  Object.defineProperty(creator, 'postcss', {
+    get: function get() {
+      if (!cache) cache = creator();
+      return cache;
+    }
+  });
+
+  creator.process = function (css, processOpts, pluginOpts) {
+    return postcss([creator(pluginOpts)]).process(css, processOpts);
+  };
+
+  return creator;
+};
+/**
+ * Default function to convert a node tree into a CSS string.
+ *
+ * @param {Node} node       Start node for stringifing. Usually {@link Root}.
+ * @param {builder} builder Function to concatenate CSS from node’s parts
+ *                          or generate string and source map.
+ *
+ * @return {void}
+ *
+ * @function
+ */
+
+
+postcss.stringify = _stringify.default;
+/**
+ * Parses source css and returns a new {@link Root} node,
+ * which contains the source CSS nodes.
+ *
+ * @param {string|toString} css   String with input CSS or any object
+ *                                with toString() method, like a Buffer
+ * @param {processOptions} [opts] Options with only `from` and `map` keys.
+ *
+ * @return {Root} PostCSS AST.
+ *
+ * @example
+ * // Simple CSS concatenation with source map support
+ * const root1 = postcss.parse(css1, { from: file1 })
+ * const root2 = postcss.parse(css2, { from: file2 })
+ * root1.append(root2).toResult().css
+ *
+ * @function
+ */
+
+postcss.parse = _parse.default;
+/**
+ * Contains the {@link vendor} module.
+ *
+ * @type {vendor}
+ *
+ * @example
+ * postcss.vendor.unprefixed('-moz-tab') //=> ['tab']
+ */
+
+postcss.vendor = _vendor.default;
+/**
+ * Contains the {@link list} module.
+ *
+ * @member {list}
+ *
+ * @example
+ * postcss.list.space('5px calc(10% + 5px)') //=> ['5px', 'calc(10% + 5px)']
+ */
+
+postcss.list = _list.default;
+/**
+ * Creates a new {@link Comment} node.
+ *
+ * @param {object} [defaults] Properties for the new node.
+ *
+ * @return {Comment} New comment node
+ *
+ * @example
+ * postcss.comment({ text: 'test' })
+ */
+
+postcss.comment = function (defaults) {
+  return new _comment.default(defaults);
+};
+/**
+ * Creates a new {@link AtRule} node.
+ *
+ * @param {object} [defaults] Properties for the new node.
+ *
+ * @return {AtRule} new at-rule node
+ *
+ * @example
+ * postcss.atRule({ name: 'charset' }).toString() //=> "@charset"
+ */
+
+
+postcss.atRule = function (defaults) {
+  return new _atRule.default(defaults);
+};
+/**
+ * Creates a new {@link Declaration} node.
+ *
+ * @param {object} [defaults] Properties for the new node.
+ *
+ * @return {Declaration} new declaration node
+ *
+ * @example
+ * postcss.decl({ prop: 'color', value: 'red' }).toString() //=> "color: red"
+ */
+
+
+postcss.decl = function (defaults) {
+  return new _declaration.default(defaults);
+};
+/**
+ * Creates a new {@link Rule} node.
+ *
+ * @param {object} [defaults] Properties for the new node.
+ *
+ * @return {Rule} new rule node
+ *
+ * @example
+ * postcss.rule({ selector: 'a' }).toString() //=> "a {\n}"
+ */
+
+
+postcss.rule = function (defaults) {
+  return new _rule.default(defaults);
+};
+/**
+ * Creates a new {@link Root} node.
+ *
+ * @param {object} [defaults] Properties for the new node.
+ *
+ * @return {Root} new root node.
+ *
+ * @example
+ * postcss.root({ after: '\n' }).toString() //=> "\n"
+ */
+
+
+postcss.root = function (defaults) {
+  return new _root.default(defaults);
+};
+
+var _default = postcss;
+exports.default = _default;
+module.exports = exports.default;
+
+
+},{"./at-rule":2,"./comment":3,"./declaration":6,"./list":9,"./parse":12,"./processor":16,"./root":18,"./rule":19,"./stringify":21,"./vendor":23}],15:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -4014,7 +4303,7 @@ module.exports = exports.default;
 
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":37,"fs":36,"path":39,"source-map":34}],14:[function(require,module,exports){
+},{"buffer":39,"fs":38,"path":41,"source-map":36}],16:[function(require,module,exports){
 (function (process){
 "use strict";
 
@@ -4281,7 +4570,7 @@ module.exports = exports.default;
 
 
 }).call(this,require('_process'))
-},{"./lazy-result":7,"_process":40}],15:[function(require,module,exports){
+},{"./lazy-result":8,"_process":42}],17:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -4498,7 +4787,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{"./warning":23}],16:[function(require,module,exports){
+},{"./warning":25}],18:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -4629,7 +4918,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{"./container":3,"./lazy-result":7,"./processor":14}],17:[function(require,module,exports){
+},{"./container":4,"./lazy-result":8,"./processor":16}],19:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -4749,7 +5038,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{"./container":3,"./list":8}],18:[function(require,module,exports){
+},{"./container":4,"./list":9}],20:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -5115,7 +5404,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -5135,7 +5424,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{"./stringifier":18}],20:[function(require,module,exports){
+},{"./stringifier":20}],22:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -5432,7 +5721,7 @@ function tokenizer(input, options) {
 module.exports = exports.default;
 
 
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -5487,7 +5776,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -5506,7 +5795,7 @@ function warnOnce(message) {
 module.exports = exports.default;
 
 
-},{}],23:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -5641,7 +5930,7 @@ exports.default = _default;
 module.exports = exports.default;
 
 
-},{}],24:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -5764,7 +6053,7 @@ ArraySet.prototype.toArray = function ArraySet_toArray() {
 
 exports.ArraySet = ArraySet;
 
-},{"./util":33}],25:[function(require,module,exports){
+},{"./util":35}],27:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -5906,7 +6195,7 @@ exports.decode = function base64VLQ_decode(aStr, aIndex, aOutParam) {
   aOutParam.rest = aIndex;
 };
 
-},{"./base64":26}],26:[function(require,module,exports){
+},{"./base64":28}],28:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -5975,7 +6264,7 @@ exports.decode = function (charCode) {
   return -1;
 };
 
-},{}],27:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -6088,7 +6377,7 @@ exports.search = function search(aNeedle, aHaystack, aCompare, aBias) {
   return index;
 };
 
-},{}],28:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2014 Mozilla Foundation and contributors
@@ -6169,7 +6458,7 @@ MappingList.prototype.toArray = function MappingList_toArray() {
 
 exports.MappingList = MappingList;
 
-},{"./util":33}],29:[function(require,module,exports){
+},{"./util":35}],31:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -6285,7 +6574,7 @@ exports.quickSort = function (ary, comparator) {
   doQuickSort(ary, comparator, 0, ary.length - 1);
 };
 
-},{}],30:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7432,7 +7721,7 @@ IndexedSourceMapConsumer.prototype._parseMappings =
 
 exports.IndexedSourceMapConsumer = IndexedSourceMapConsumer;
 
-},{"./array-set":24,"./base64-vlq":25,"./binary-search":27,"./quick-sort":29,"./util":33}],31:[function(require,module,exports){
+},{"./array-set":26,"./base64-vlq":27,"./binary-search":29,"./quick-sort":31,"./util":35}],33:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7859,7 +8148,7 @@ SourceMapGenerator.prototype.toString =
 
 exports.SourceMapGenerator = SourceMapGenerator;
 
-},{"./array-set":24,"./base64-vlq":25,"./mapping-list":28,"./util":33}],32:[function(require,module,exports){
+},{"./array-set":26,"./base64-vlq":27,"./mapping-list":30,"./util":35}],34:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -8274,7 +8563,7 @@ SourceNode.prototype.toStringWithSourceMap = function SourceNode_toStringWithSou
 
 exports.SourceNode = SourceNode;
 
-},{"./source-map-generator":31,"./util":33}],33:[function(require,module,exports){
+},{"./source-map-generator":33,"./util":35}],35:[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -8764,7 +9053,7 @@ function computeSourceURL(sourceRoot, sourceURL, sourceMapURL) {
 }
 exports.computeSourceURL = computeSourceURL;
 
-},{}],34:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:
@@ -8774,7 +9063,7 @@ exports.SourceMapGenerator = require('./lib/source-map-generator').SourceMapGene
 exports.SourceMapConsumer = require('./lib/source-map-consumer').SourceMapConsumer;
 exports.SourceNode = require('./lib/source-node').SourceNode;
 
-},{"./lib/source-map-consumer":30,"./lib/source-map-generator":31,"./lib/source-node":32}],35:[function(require,module,exports){
+},{"./lib/source-map-consumer":32,"./lib/source-map-generator":33,"./lib/source-node":34}],37:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -8927,9 +9216,9 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],36:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 
-},{}],37:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 (function (Buffer){
 /*!
  * The buffer module from node.js, for the browser.
@@ -10710,7 +10999,7 @@ function numberIsNaN (obj) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"base64-js":35,"buffer":37,"ieee754":38}],38:[function(require,module,exports){
+},{"base64-js":37,"buffer":39,"ieee754":40}],40:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = (nBytes * 8) - mLen - 1
@@ -10796,7 +11085,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],39:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 (function (process){
 // .dirname, .basename, and .extname methods are extracted from Node.js v8.11.1,
 // backported and transplited with Babel, with backwards-compat fixes
@@ -11102,7 +11391,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":40}],40:[function(require,module,exports){
+},{"_process":42}],42:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -11288,291 +11577,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],"postcss":[function(require,module,exports){
-"use strict";
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _declaration = _interopRequireDefault(require("./declaration"));
-
-var _processor = _interopRequireDefault(require("./processor"));
-
-var _stringify = _interopRequireDefault(require("./stringify"));
-
-var _comment = _interopRequireDefault(require("./comment"));
-
-var _atRule = _interopRequireDefault(require("./at-rule"));
-
-var _vendor = _interopRequireDefault(require("./vendor"));
-
-var _parse = _interopRequireDefault(require("./parse"));
-
-var _list = _interopRequireDefault(require("./list"));
-
-var _rule = _interopRequireDefault(require("./rule"));
-
-var _root = _interopRequireDefault(require("./root"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Create a new {@link Processor} instance that will apply `plugins`
- * as CSS processors.
- *
- * @param {Array.<Plugin|pluginFunction>|Processor} plugins PostCSS plugins.
- *        See {@link Processor#use} for plugin format.
- *
- * @return {Processor} Processor to process multiple CSS.
- *
- * @example
- * import postcss from 'postcss'
- *
- * postcss(plugins).process(css, { from, to }).then(result => {
- *   console.log(result.css)
- * })
- *
- * @namespace postcss
- */
-function postcss() {
-  for (var _len = arguments.length, plugins = new Array(_len), _key = 0; _key < _len; _key++) {
-    plugins[_key] = arguments[_key];
-  }
-
-  if (plugins.length === 1 && Array.isArray(plugins[0])) {
-    plugins = plugins[0];
-  }
-
-  return new _processor.default(plugins);
-}
-/**
- * Creates a PostCSS plugin with a standard API.
- *
- * The newly-wrapped function will provide both the name and PostCSS
- * version of the plugin.
- *
- * ```js
- * const processor = postcss([replace])
- * processor.plugins[0].postcssPlugin  //=> 'postcss-replace'
- * processor.plugins[0].postcssVersion //=> '6.0.0'
- * ```
- *
- * The plugin function receives 2 arguments: {@link Root}
- * and {@link Result} instance. The function should mutate the provided
- * `Root` node. Alternatively, you can create a new `Root` node
- * and override the `result.root` property.
- *
- * ```js
- * const cleaner = postcss.plugin('postcss-cleaner', () => {
- *   return (root, result) => {
- *     result.root = postcss.root()
- *   }
- * })
- * ```
- *
- * As a convenience, plugins also expose a `process` method so that you can use
- * them as standalone tools.
- *
- * ```js
- * cleaner.process(css, processOpts, pluginOpts)
- * // This is equivalent to:
- * postcss([ cleaner(pluginOpts) ]).process(css, processOpts)
- * ```
- *
- * Asynchronous plugins should return a `Promise` instance.
- *
- * ```js
- * postcss.plugin('postcss-import', () => {
- *   return (root, result) => {
- *     return new Promise( (resolve, reject) => {
- *       fs.readFile('base.css', (base) => {
- *         root.prepend(base)
- *         resolve()
- *       })
- *     })
- *   }
- * })
- * ```
- *
- * Add warnings using the {@link Node#warn} method.
- * Send data to other plugins using the {@link Result#messages} array.
- *
- * ```js
- * postcss.plugin('postcss-caniuse-test', () => {
- *   return (root, result) => {
- *     root.walkDecls(decl => {
- *       if (!caniuse.support(decl.prop)) {
- *         decl.warn(result, 'Some browsers do not support ' + decl.prop)
- *       }
- *     })
- *   }
- * })
- * ```
- *
- * @param {string} name          PostCSS plugin name. Same as in `name`
- *                               property in `package.json`. It will be saved
- *                               in `plugin.postcssPlugin` property.
- * @param {function} initializer Will receive plugin options
- *                               and should return {@link pluginFunction}
- *
- * @return {Plugin} PostCSS plugin.
- */
-
-
-postcss.plugin = function plugin(name, initializer) {
-  function creator() {
-    var transformer = initializer.apply(void 0, arguments);
-    transformer.postcssPlugin = name;
-    transformer.postcssVersion = new _processor.default().version;
-    return transformer;
-  }
-
-  var cache;
-  Object.defineProperty(creator, 'postcss', {
-    get: function get() {
-      if (!cache) cache = creator();
-      return cache;
-    }
-  });
-
-  creator.process = function (css, processOpts, pluginOpts) {
-    return postcss([creator(pluginOpts)]).process(css, processOpts);
-  };
-
-  return creator;
-};
-/**
- * Default function to convert a node tree into a CSS string.
- *
- * @param {Node} node       Start node for stringifing. Usually {@link Root}.
- * @param {builder} builder Function to concatenate CSS from node’s parts
- *                          or generate string and source map.
- *
- * @return {void}
- *
- * @function
- */
-
-
-postcss.stringify = _stringify.default;
-/**
- * Parses source css and returns a new {@link Root} node,
- * which contains the source CSS nodes.
- *
- * @param {string|toString} css   String with input CSS or any object
- *                                with toString() method, like a Buffer
- * @param {processOptions} [opts] Options with only `from` and `map` keys.
- *
- * @return {Root} PostCSS AST.
- *
- * @example
- * // Simple CSS concatenation with source map support
- * const root1 = postcss.parse(css1, { from: file1 })
- * const root2 = postcss.parse(css2, { from: file2 })
- * root1.append(root2).toResult().css
- *
- * @function
- */
-
-postcss.parse = _parse.default;
-/**
- * Contains the {@link vendor} module.
- *
- * @type {vendor}
- *
- * @example
- * postcss.vendor.unprefixed('-moz-tab') //=> ['tab']
- */
-
-postcss.vendor = _vendor.default;
-/**
- * Contains the {@link list} module.
- *
- * @member {list}
- *
- * @example
- * postcss.list.space('5px calc(10% + 5px)') //=> ['5px', 'calc(10% + 5px)']
- */
-
-postcss.list = _list.default;
-/**
- * Creates a new {@link Comment} node.
- *
- * @param {object} [defaults] Properties for the new node.
- *
- * @return {Comment} New comment node
- *
- * @example
- * postcss.comment({ text: 'test' })
- */
-
-postcss.comment = function (defaults) {
-  return new _comment.default(defaults);
-};
-/**
- * Creates a new {@link AtRule} node.
- *
- * @param {object} [defaults] Properties for the new node.
- *
- * @return {AtRule} new at-rule node
- *
- * @example
- * postcss.atRule({ name: 'charset' }).toString() //=> "@charset"
- */
-
-
-postcss.atRule = function (defaults) {
-  return new _atRule.default(defaults);
-};
-/**
- * Creates a new {@link Declaration} node.
- *
- * @param {object} [defaults] Properties for the new node.
- *
- * @return {Declaration} new declaration node
- *
- * @example
- * postcss.decl({ prop: 'color', value: 'red' }).toString() //=> "color: red"
- */
-
-
-postcss.decl = function (defaults) {
-  return new _declaration.default(defaults);
-};
-/**
- * Creates a new {@link Rule} node.
- *
- * @param {object} [defaults] Properties for the new node.
- *
- * @return {Rule} new rule node
- *
- * @example
- * postcss.rule({ selector: 'a' }).toString() //=> "a {\n}"
- */
-
-
-postcss.rule = function (defaults) {
-  return new _rule.default(defaults);
-};
-/**
- * Creates a new {@link Root} node.
- *
- * @param {object} [defaults] Properties for the new node.
- *
- * @return {Root} new root node.
- *
- * @example
- * postcss.root({ after: '\n' }).toString() //=> "\n"
- */
-
-
-postcss.root = function (defaults) {
-  return new _root.default(defaults);
-};
-
-var _default = postcss;
-exports.default = _default;
-module.exports = exports.default;
-
-
-},{"./at-rule":1,"./comment":2,"./declaration":5,"./list":8,"./parse":11,"./processor":14,"./root":16,"./rule":17,"./stringify":19,"./vendor":21}]},{},[]);
+},{}]},{},[1]);
